@@ -1,22 +1,18 @@
-const popups = document.querySelectorAll(`.modal`);
-const buttonSuccess = document.querySelector(`.show-success`);
-const popapSuccess = document.querySelector(`.btn_success`);
+const modalMain = document.getElementById('modal_main');
+const modalSuccess = document.getElementById('modal_success');
+const modalCloseButtons = document.querySelectorAll('.modal__close');
+const showSuccessButton = document.querySelector('.show-success');
 
-(function() {
-  popups.forEach(popap => {
-    if (!popap.querySelector(`.btn_success`)) {
-      popap.className = `modal modal_active`;
-    }
-    popap.querySelector(`.modal__close`).onclick = closePopup;
-    popap.querySelector(`.show-success`).onclick = showSuccess;
-  })
-}());
+modalMain.classList.add('modal_active');
 
-function closePopup() {
-  this.closest(`.modal`).className = `modal`;
-}
+modalCloseButtons.forEach((button) => {
+   button.addEventListener('click', () => {
+      button.closest('.modal').classList.remove('modal_active');
+   });
+});
 
-function showSuccess() {
-  buttonSuccess.closest(`.modal`).className = `modal`;
-  popapSuccess.closest(`.modal`).className = `modal modal_active`;
-}
+showSuccessButton.addEventListener('click', (event) => {
+   event.preventDefault();
+   modalMain.classList.remove('modal_active');
+   modalSuccess.classList.add('modal_active');
+});
