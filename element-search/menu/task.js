@@ -1,16 +1,11 @@
-const subItems = document.querySelectorAll(`.menu_sub`);
+const menuLinks = document.querySelectorAll('.menu__link');
 
-(function() {
-  subItems.forEach(section => {
-    section.closest(`.menu__item`).querySelector(`.menu__link`).onclick = openMenu;
+menuLinks.forEach((element) => {
+  element.addEventListener('click', (event) => {
+    event.preventDefault();
+    const menu = element.nextElementSibling
+    if(menu.classList.contains('menu_sub')) {
+      menu.classList.toggle('menu_active')
+    }
   })
-}());
-
-function openMenu() {
-  if (this.closest(`.menu__item`).querySelector(`.menu_active`)) {
-    this.closest(`.menu__item`).querySelector(`.menu_sub`).className = `menu menu_sub`;
-  } else {
-    this.closest(`.menu__item`).querySelector(`.menu_sub`).className = `menu menu_sub menu_active`;
-  } 
-    return false;
-}
+})
