@@ -5,9 +5,10 @@ const taskList = document.getElementById('tasks__list');
 function removeTask() {
   const removedItem = this.closest('.task');
   taskList.removeChild(removedItem);
-}
+};
 
 function newTask(event) {
+  event.preventDefault();
   if (taskInputText.value.trim() !== '') {
     const newTaskAddDiv = `
       <div class="task">
@@ -22,13 +23,13 @@ function newTask(event) {
     const taskRemoveButtons = document.querySelectorAll('.task__remove');
     taskRemoveButtons[taskRemoveButtons.length - 1].addEventListener('click', removeTask);
   }
-}
+};
 
 function newTaskByEnter(event) {
   if (event.keyCode === 13){
     newTask();
   }
-}
+};
 
-taskInputText.addEventListener('keydown', newTaskByEnter);
+//taskInputText.addEventListener('keydown', newTaskByEnter);
 taskInputButton.addEventListener('click', newTask);
