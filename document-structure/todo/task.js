@@ -25,11 +25,4 @@ function newTask(event) {
   }
 };
 
-function newTaskByEnter(event) {
-  if (event.keyCode === 13){
-    newTask();
-  }
-};
-
-//taskInputText.addEventListener('keydown', newTaskByEnter);
 taskInputButton.addEventListener('click', newTask);
